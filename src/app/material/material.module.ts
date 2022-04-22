@@ -7,6 +7,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 const MaterialComponents = [
   MatButtonModule, 
@@ -16,7 +20,11 @@ const MaterialComponents = [
   MatTabsModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatMenuModule,
+  BrowserAnimationsModule,
+  FlexLayoutModule,
+  MatSidenavModule
 ]
 
 @NgModule({
