@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body {
+    background-color: black;
+}
+
 svg path {
     fill: #8a00f4;
     stroke: rgb(0, 0, 0);
