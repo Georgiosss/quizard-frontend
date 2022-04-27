@@ -1,11 +1,11 @@
 .example-card {
     max-width: 400px;
-    margin: auto;
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.mat-tab-group {
-    margin-bottom: 48px;
-}
 
 :host {
     display: flex;
@@ -35,3 +35,6 @@
   .example-container > * {
     width: 100%;
   }
+
+  
+  

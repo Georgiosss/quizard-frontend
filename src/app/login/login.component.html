@@ -1,49 +1,50 @@
-<mat-card class="example-card">
-    <mat-tab-group animationDuration="0ms">
-        <mat-tab label="შესვლა">
-            <div class="example-container">
-                <mat-form-field appearance="outline">
-                    <mat-label>მომხმარებლის სახელი</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>პაროლი</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </mat-form-field>
-                <button mat-raised-button color="primary">შესვლა</button>
-                <br>
-                <button mat-raised-button color="accent">გუგლის ანგარიშით შესვლა</button>
-            </div>
-        </mat-tab>
-        <mat-tab label="რეგისტრაცია">
-            <div class="example-container">
-                <mat-form-field appearance="outline">
-                    <mat-label>მომხმარებლის სახელი</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>პაროლი</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
+
+    <mat-card class="example-card">
+      <mat-tab-group animationDuration="0ms">
+          <mat-tab label="შესვლა">
+              <div class="example-container">
+                  <mat-form-field appearance="outline">
+                      <mat-label>მომხმარებლის სახელი</mat-label>
+                      <input matInput>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>პაროლი განმეორებით</mat-label>
-                    <input matInput [type]="hideSecond ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hideSecond = !hideSecond" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hideSecond ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
+                      <mat-label>პაროლი</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  <button mat-raised-button color="primary">შესვლა</button>
+                  <br>
+                  <button mat-raised-button color="accent">გუგლის ანგარიშით შესვლა</button>
+              </div>
+          </mat-tab>
+          <mat-tab label="რეგისტრაცია">
+              <div class="example-container">
+                  <mat-form-field appearance="outline">
+                      <mat-label>მომხმარებლის სახელი</mat-label>
+                      <input matInput>
                   </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <button mat-raised-button color="primary">რეგისტრაცია</button>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
-</mat-card>
+                  <mat-form-field appearance="outline">
+                      <mat-label>პაროლი</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>პაროლი განმეორებით</mat-label>
+                      <input matInput [type]="hideSecond ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hideSecond = !hideSecond" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hideSecond ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input matInput>
+                  </mat-form-field>
+                  <button mat-raised-button color="primary">რეგისტრაცია</button>
+              </div>
+          </mat-tab>
+      </mat-tab-group>
+  </mat-card>
