@@ -5,24 +5,24 @@
                 <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>პროფილი</button>
-                <button mat-menu-item>თამაშის წესები</button>
-                <button mat-menu-item>ჩემი კლასები</button>
-                <button mat-menu-item>კითხვების მენეჯმენტი</button>
-                <button mat-menu-item>ჩვენს შესახებ</button>
-                <button mat-menu-item>კონტაქტი</button>
+                <button mat-menu-item (click)="goToProfile()">პროფილი</button>
+                <button mat-menu-item (click)="goToGameRules()">თამაშის წესები</button>
+                <button mat-menu-item (click)="goToMyClasses()">ჩემი კლასები</button>
+                <button mat-menu-item (click)="goToQuestionsManagement()">კითხვების მენეჯმენტი</button>
+                <button mat-menu-item (click)="goToAboutUs()">ჩვენს შესახებ</button>
+                <button mat-menu-item (click)="goToContact()">კონტაქტი</button>
             </mat-menu>
         </div>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="goToMainPage()" >
             <mat-icon>home</mat-icon>
         </button>
         <div fxShow="true" fxHide.lt-md="true">
-            <button mat-button>პროფილი</button>
-            <button mat-button>თამაშის წესები</button>
-            <button mat-button>ჩემი კლასები</button>
-            <button mat-button>კითხვების მენეჯმენტი</button>
-            <button mat-button>ჩვენს შესახებ</button>
-            <button mat-button>კონტაქტი</button>
+            <button mat-button (click)="goToProfile()">პროფილი</button>
+            <button mat-button (click)="goToGameRules()">თამაშის წესები</button>
+            <button mat-button (click)="goToMyClasses()">ჩემი კლასები</button>
+            <button mat-button (click)="goToQuestionsManagement()">კითხვების მენეჯმენტი</button>
+            <button mat-button (click)="goToAboutUs()">ჩვენს შესახებ</button>
+            <button mat-button (click)="goToContact()">კონტაქტი</button>
         </div>
         <span class="spacer"></span>
         <button mat-icon-button>

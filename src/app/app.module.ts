@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TmpComponent } from './tmp/tmp.component';
 import { MaterialModule } from './material/material.module';
 import { NavigationComponent } from './navigation/navigation.component';
-import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyClassesComponent } from './my-classes/my-classes.component';
+import { ContactComponent } from './contact/contact.component';
+import { QuestionsManagementComponent } from './questions-management/questions-management.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TmpComponent,
     NavigationComponent,
-    LoginComponent
+    routingComponents,
+    ProfileComponent,
+    MyClassesComponent,
+    ContactComponent,
+    QuestionsManagementComponent
   ],
   imports: [
     BrowserModule,
