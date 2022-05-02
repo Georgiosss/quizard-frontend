@@ -4,10 +4,6 @@
     padding: 0;
 }
 
-body {
-    background-color: rgb(225, 225, 225);
-}
-
 svg path {
     fill: #8a00f4;
     stroke: rgb(0, 0, 0);
@@ -63,19 +59,19 @@ svg path:hover {
   }
   
   #stars-group-2{
-      @include stars-content(1800, #fff, 200, 1, 0.1);
+      @include stars-content(1800, rgb(253, 236, 0), 200, 1, 0.1);
   }
   
   #stars-group-3{
-      @include stars-content(1800, #fff, 200, 1, 0.2);
+      @include stars-content(1800, rgb(0, 162, 255), 200, 1, 0.2);
   }
   
   #stars-group-4{
-      @include stars-content(1800, #fff, 200, 1, 0.3);
+      @include stars-content(1800, rgb(20, 175, 0), 200, 1, 0.3);
   }
   
   #stars-group-5{
-      @include stars-content(1800, #fff, 200, 1, 0.4);
+      @include stars-content(1800, rgb(255, 0, 0), 200, 1, 0.4);
   }
   
   #stars-group-6{

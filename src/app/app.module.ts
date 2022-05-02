@@ -11,6 +11,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyClassesComponent } from './my-classes/my-classes.component';
 import { ContactComponent } from './contact/contact.component';
 import { QuestionsManagementComponent } from './questions-management/questions-management.component';
+import { FooComponent } from './foo/foo.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +24,15 @@ import { QuestionsManagementComponent } from './questions-management/questions-m
     ProfileComponent,
     MyClassesComponent,
     ContactComponent,
-    QuestionsManagementComponent
+    QuestionsManagementComponent,
+    FooComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
