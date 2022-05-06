@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from './../shared/auth.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    private http: HttpClient
   ) {
     this.signupForm = this.fb.group({
       email: [''],
@@ -27,6 +29,11 @@ export class SignupComponent implements OnInit {
   ngOnInit() {}
 
   registerUser() {
+    this.http.get<any>("http://backendfoobar-env.eba-csyhpyy3.eu-central-1.elasticbeanstalk.com/foo").subscribe(data => alert(data));
+  }
+
+  registerUser2() {
+    
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
       if (res.result) {
         this.signupForm.reset();
