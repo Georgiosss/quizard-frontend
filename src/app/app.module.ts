@@ -12,7 +12,11 @@ import { MyClassesComponent } from './my-classes/my-classes.component';
 import { ContactComponent } from './contact/contact.component';
 import { QuestionsManagementComponent } from './questions-management/questions-management.component';
 import { FooComponent } from './foo/foo.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -25,14 +29,19 @@ import { HttpClientModule } from '@angular/common/http';
     MyClassesComponent,
     ContactComponent,
     QuestionsManagementComponent,
-    FooComponent
+    FooComponent,
+    SigninComponent,
+    SignupComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
