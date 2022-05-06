@@ -29,10 +29,6 @@ export class SignupComponent implements OnInit {
   ngOnInit() {}
 
   registerUser() {
-    this.http.get<any>("http://backendfoobar-env.eba-csyhpyy3.eu-central-1.elasticbeanstalk.com/foo").subscribe(data => alert(data));
-  }
-
-  registerUser2() {
     
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
       if (res.result) {

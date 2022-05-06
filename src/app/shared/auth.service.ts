@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
-  endpoint: string = 'http://backendfoobar-env.eba-csyhpyy3.eu-central-1.elasticbeanstalk.com/5000';
+  endpoint: string = 'http://backendfoobar-env.eba-csyhpyy3.eu-central-1.elasticbeanstalk.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
 
