@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'my-classes', component: MyClassesComponent},
-  { path: '', redirectTo: '/log-in', pathMatch: 'full' },
+  { path: '', component: LoginComponent},
   { path: 'log-in', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
   {

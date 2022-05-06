@@ -11,6 +11,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 
 const MaterialComponents = [
   MatButtonModule, 
@@ -24,7 +25,8 @@ const MaterialComponents = [
   MatMenuModule,
   BrowserAnimationsModule,
   FlexLayoutModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSelectModule
 ]
 
 @NgModule({

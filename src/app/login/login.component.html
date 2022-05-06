@@ -4,57 +4,47 @@
           <mat-tab label="შესვლა">
               <div class="example-container">
                   <mat-form-field appearance="outline">
-                      <mat-label>მომხმარებლის სახელი</mat-label>
-                      <input matInput>
+                      <mat-label>Email</mat-label>
+                      <input matInput [(ngModel)]="loginEmail">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                       <mat-label>პაროლი</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="loginPassword">
                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
-                  <button mat-raised-button color="primary">შესვლა</button>
-                  <br>
-                  
-               <div id="gSignInWrapper">
-                    <div id="customBtn" class="customGPlusSignIn" style="background-color: #ff2e2e;">
-                      <button mat-raised-button color="primary">შესვლა</button>
-                    </div>
-                  </div>
-                  <div id="name"></div>
-                
-                    
-
-
-
+                  <button mat-raised-button color="primary" (click)="signIn()">შესვლა</button>
+               
               </div>
           </mat-tab>
           <mat-tab label="რეგისტრაცია">
               <div class="example-container">
                   <mat-form-field appearance="outline">
                       <mat-label>მომხმარებლის სახელი</mat-label>
-                      <input matInput>
+                      <input matInput [(ngModel)]="registrationUserName">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                       <mat-label>პაროლი</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="registrationPassword">
                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>პაროლი განმეორებით</mat-label>
-                      <input matInput [type]="hideSecond ? 'password' : 'text'">
-                      <button mat-icon-button matSuffix (click)="hideSecond = !hideSecond" [attr.aria-label]="'დაფარე პაროლი'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hideSecond ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput [(ngModel)]="registrationEmail">
                     </mat-form-field>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Email</mat-label>
-                      <input matInput>
-                  </mat-form-field>
-                  <button mat-raised-button color="primary">რეგისტრაცია</button>
+                    <mat-form-field appearance="fill">
+                      <mat-label>მომხმარებლის ტიპი</mat-label>
+                      <mat-select [(ngModel)]="role" name="role">
+                        <mat-option *ngFor="let role of roles" [value]="role.value">
+                          {{role.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  
+                  <button mat-raised-button color="primary" (click)="signUp()">რეგისტრაცია</button>
               </div>
           </mat-tab>
       </mat-tab-group>
