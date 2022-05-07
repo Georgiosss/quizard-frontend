@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   endpoint: string = 'http://backendfoobar-env.eba-csyhpyy3.eu-central-1.elasticbeanstalk.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
+  currentUser: User = new User();
 
   constructor(private http: HttpClient, public router: Router) {}
 
@@ -32,7 +32,8 @@ export class AuthService {
       .post<any>(`${this.endpoint}/api/auth/signin`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        alert("საღოლ შეხვედი!")
+        localStorage.setItem('user', JSON.stringify(res));
+        this.router.navigate(['main-page']);
       });
   }
 
@@ -40,15 +41,21 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  getCurrentUser() {
+    let obj = localStorage.getItem('user');
+    return JSON.parse(obj == null ? '' : obj);
+  }
+
   get isLoggedIn(): boolean {
     let authToken = localStorage.getItem('access_token');
     return authToken !== null ? true : false;
   }
 
-  doLogout() {
+  public doLogout() {
+    localStorage.removeItem('user');
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['log-in']);
+      this.router.navigate(['']);
     }
   }
 
@@ -74,5 +81,13 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
+  }
+
+  hasRoleIn(roles: string[]) {
+    let user: User = this.getCurrentUser();
+    return user.roles.filter(x => x in roles).length > 0;
+    console.log(user.roles.filter(x => x in roles));
+    console.log(user.roles);
+    console.log(roles);
   }
 }

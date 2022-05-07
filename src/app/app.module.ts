@@ -17,6 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     FooComponent,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

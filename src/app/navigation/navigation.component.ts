@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 export class NavigationComponent {
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, public authService: AuthService) {
 
   }
 
@@ -18,7 +19,7 @@ export class NavigationComponent {
   }
 
   goToMainPage() {
-    this.router.navigate(['/'], { relativeTo: this.route });
+    this.router.navigate(['/main-page'], { relativeTo: this.route });
   }
 
   goToAboutUs() {
@@ -39,5 +40,9 @@ export class NavigationComponent {
 
   goToContact() {
     this.router.navigate(['contact'], { relativeTo: this.route });
+  }
+
+  logOut() {
+    this.authService.doLogout();
   }
 }

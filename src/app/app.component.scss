@@ -48,8 +48,9 @@ svg path:hover {
       animation-delay: $delay+s;
   }
   
-  body{
-    background: #000;
+  .stars{
+    background-color: #000;
+    height: 100%;
   }
   
   //Change colors for multi-colors star groups

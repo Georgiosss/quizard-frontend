@@ -7,9 +7,8 @@ import { QuestionsManagementComponent } from './questions-management/questions-m
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyClassesComponent } from './my-classes/my-classes.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 import { AuthGuard } from './shared/auth.guard';
 
@@ -21,8 +20,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'my-classes', component: MyClassesComponent},
   { path: '', component: LoginComponent},
-  { path: 'log-in', component: SigninComponent },
-  { path: 'sign-up', component: SignupComponent },
+  { path: 'main-page', component: MainPageComponent, canActivate: [AuthGuard]},
   {
     path: 'user-profile/:id',
     component: UserProfileComponent,
