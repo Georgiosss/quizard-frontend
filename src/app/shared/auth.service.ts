@@ -7,6 +7,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { config } from '../config';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
-  endpoint: string = 'http://quizard-backend-env.eba-f8icbqyg.eu-central-1.elasticbeanstalk.com';
+  endpoint: string = config.apiUrl;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser: User = new User();
 
@@ -82,8 +83,5 @@ export class AuthService {
   hasRoleIn(roles: string[]) {
     let user: User = this.getCurrentUser();
     return user.roles.filter(x => x in roles).length > 0;
-    console.log(user.roles.filter(x => x in roles));
-    console.log(user.roles);
-    console.log(roles);
   }
 }
