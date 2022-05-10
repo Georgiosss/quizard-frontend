@@ -11,7 +11,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyClassesComponent } from './my-classes/my-classes.component';
 import { ContactComponent } from './contact/contact.component';
 import { QuestionsManagementComponent } from './questions-management/questions-management.component';
-import { FooComponent } from './foo/foo.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
@@ -30,7 +29,6 @@ import { MainPageComponent } from './main-page/main-page.component';
     MyClassesComponent,
     ContactComponent,
     QuestionsManagementComponent,
-    FooComponent,
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
