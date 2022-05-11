@@ -6,20 +6,20 @@ import {
 } from '@angular/common/http';
 import { config } from '../config';
 import { Router } from '@angular/router';
-import { Contact } from './contact';
+import { ClassMember } from './class-member';
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class ContactService {
+export class MyClassService {
   endpoint: string = config.apiUrl;
 
   constructor(private http: HttpClient, public router: Router) {}
 
-  getContactInfo(): Observable<any> {
-    let url = `${this.endpoint}/contact/get-info`;
-    return this.http.get<Contact[]>(url);
+  getClass(): Observable<any> {
+    let url = `${this.endpoint}/class/{0}`;
+    return this.http.get<ClassMember[]>(url);
   }
 
 }

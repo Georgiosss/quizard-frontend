@@ -17,6 +17,7 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { MyClassComponent } from './my-class/my-class.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
-    MainPageComponent
+    MainPageComponent,
+    MyClassComponent
   ],
   imports: [
     BrowserModule,

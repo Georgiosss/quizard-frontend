@@ -5,6 +5,12 @@
     justify-content: center;
     margin: 20px;
 }
+
+.card {
+    display:flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}
   
   .example-header-image {
     background-image: url('./../../assets/images/FreeUniLogo.png');
