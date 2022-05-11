@@ -1,0 +1,22 @@
+.example-card {
+    max-width: 400px;
+    width: 100%;
+
+    justify-content: center;
+    margin: 20px;
+}
+  
+  .example-header-image {
+    background-image: url('./../../assets/images/FreeUniLogo.png');
+    background-size: cover;
+  }
+
+  .facebook-image {
+    background-image: url('./../../assets/images/facebook-logo.png');
+    background-size: cover;
+  }
+
+  .linkedin-image {
+    background-image: url('./../../assets/images/linkedin-logo.png');
+    background-size: cover;
+  }
