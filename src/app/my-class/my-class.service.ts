@@ -17,8 +17,8 @@ export class MyClassService {
 
   constructor(private http: HttpClient, public router: Router) {}
 
-  getClass(): Observable<any> {
-    let url = `${this.endpoint}/class/{0}`;
+  getClass(classCode: string | null): Observable<any> {
+    let url = `${this.endpoint}/class/` + classCode;
     return this.http.get<ClassMember[]>(url);
   }
 
