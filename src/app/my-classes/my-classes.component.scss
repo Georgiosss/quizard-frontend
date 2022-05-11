@@ -11,3 +11,15 @@
     flex-wrap: wrap; 
     justify-content: center;
 }
+
+.dialog-wrapper {
+    max-width: 300px;
+    width: 100%;
+
+    justify-content: center;
+    margin: 20px;
+}
+
+.action-wrapper {
+    justify-content: center;
+}

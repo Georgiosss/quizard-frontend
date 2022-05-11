@@ -6,8 +6,8 @@
             <mat-card-subtitle>მენეჯმენტის პანელი</mat-card-subtitle>
           </mat-card-header>
             <mat-card-actions>
-                <button mat-button><mat-icon>add</mat-icon>კლასში გაწევრიანება </button>
-                <button mat-button><mat-icon>add</mat-icon>კლასის შექმნა</button>
+                <button mat-button (click)="openJoinClassDialog()"><mat-icon>person_add</mat-icon>  კლასში გაწევრიანება </button>
+                <button mat-button (click)="openCreateClassDialog()"><mat-icon>add</mat-icon>კლასის შექმნა</button>
             </mat-card-actions>   
     </mat-card>
      
@@ -26,3 +26,5 @@
     </mat-card>
     
 </div>
+
+

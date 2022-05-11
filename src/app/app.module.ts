@@ -18,6 +18,8 @@ import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MyClassComponent } from './my-class/my-class.component';
+import { DialogOverviewExampleDialog } from './my-classes/my-classes.component';
+import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { MyClassComponent } from './my-class/my-class.component';
     SignupComponent,
     UserProfileComponent,
     MainPageComponent,
-    MyClassComponent
+    MyClassComponent,
+    DialogOverviewExampleDialog,
+    DialogOverviewExampleDialog2
   ],
   imports: [
     BrowserModule,

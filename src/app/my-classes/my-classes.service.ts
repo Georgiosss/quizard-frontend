@@ -22,4 +22,17 @@ export class MyClassesService {
     return this.http.get<MyClassGeneralInfo[]>(url);
   }
 
+  joinClass(classCode: string): Observable<any> {
+    let url = `${this.endpoint}/my-classes/join-class`;
+    return this.http.post<string>(url, classCode);
+  }
+
+  createClass(className: string): Observable<any> {
+    let url = `${this.endpoint}/my-classes/create-class`;
+    return this.http.post<string>(url, className);
+  }
+
+
+
+
 }

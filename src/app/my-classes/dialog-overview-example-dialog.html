@@ -1,0 +1,11 @@
+
+  <div mat-dialog-content class="dialog-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>კლასის კოდი</mat-label>
+      <input matInput [(ngModel)]="data.classCode">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="action-wrapper">
+    <button mat-button (click)="onNoClick()">დახურვა</button>
+    <button mat-button [mat-dialog-close]="data.classCode" cdkFocusInitial>გაწევრიანება</button>
+  </div>
