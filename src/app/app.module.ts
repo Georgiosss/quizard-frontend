@@ -20,6 +20,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MyClassComponent } from './my-class/my-class.component';
 import { DialogOverviewExampleDialog } from './my-classes/my-classes.component';
 import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
+import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component'
     MainPageComponent,
     MyClassComponent,
     DialogOverviewExampleDialog,
-    DialogOverviewExampleDialog2
+    DialogOverviewExampleDialog2,
+    NotificationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,11 @@ import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

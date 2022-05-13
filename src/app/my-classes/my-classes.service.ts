@@ -7,6 +7,8 @@ import {
 import { config } from '../config';
 import { Router } from '@angular/router';
 import { MyClassGeneralInfo } from './my-class-general-info'; 
+import { JoinClass } from './join-class';
+import { CreateClass } from './create-class';
 
 @Injectable({
   providedIn: 'root',
@@ -24,12 +26,12 @@ export class MyClassesService {
 
   joinClass(classCode: string): Observable<any> {
     let url = `${this.endpoint}/my-classes/join-class`;
-    return this.http.post<string>(url, classCode);
+    return this.http.post<JoinClass>(url, classCode);
   }
 
   createClass(className: string): Observable<any> {
     let url = `${this.endpoint}/my-classes/create-class`;
-    return this.http.post<string>(url, className);
+    return this.http.post<CreateClass>(url, className);
   }
 
 

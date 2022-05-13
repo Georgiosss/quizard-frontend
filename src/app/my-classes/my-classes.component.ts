@@ -3,6 +3,9 @@ import { MyClassGeneralInfo } from './my-class-general-info';
 import { MyClassesService } from './my-classes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { JoinClass } from './join-class';
+import { CreateClass } from './create-class';
+import { NotificationDialogService } from './../shared/notification-dialog/notification-dialog.service';
 
 export interface JoinClassDialogData {
   classCode: string;
@@ -25,7 +28,8 @@ export class MyClassesComponent implements OnInit {
 
   constructor(private myClassesServoce: MyClassesService, 
     private router: Router,
-     public dialog: MatDialog) { }
+     public dialog: MatDialog,
+     private notificationDialogService:NotificationDialogService) { }
 
   ngOnInit(): void {
     this.myClassesServoce.getMyClasses().subscribe((myClasses: MyClassGeneralInfo[]) => this.myClasses = myClasses);
@@ -39,8 +43,8 @@ export class MyClassesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result !== undefined) {
-        this.myClassesServoce.joinClass(result).subscribe((data: string) => {
-          console.log(data);
+        this.myClassesServoce.joinClass(result).subscribe((data: JoinClass) => {
+          this.notificationDialogService.open({title: "თქვენ წარმატებით გაწევრიანდით კლასში!", content: "კლასის სახელი არის: " + data.className});
         });
       }
     });
@@ -54,8 +58,9 @@ export class MyClassesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result !== undefined) {
-        this.myClassesServoce.createClass(result).subscribe((data: string) => {
-          console.log(data);
+        this.myClassesServoce.createClass(result).subscribe((data: CreateClass) => {
+          this.myClassesServoce.getMyClasses().subscribe((myClasses: MyClassGeneralInfo[]) => this.myClasses = myClasses);
+          this.notificationDialogService.open({title: "თქვენ წარმატებით შექმენით კლასი!", content: "კლასის კოდი არის: " + data.classCode });
         });
       }
     });
