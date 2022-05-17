@@ -22,6 +22,7 @@ import { DialogOverviewExampleDialog } from './my-classes/my-classes.component';
 import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component';
 import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
+import { InputDialogComponent } from './shared/input-dialog/input-dialog.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NotificationDialogComponent } from './shared/notification-dialog/notifi
     MyClassComponent,
     DialogOverviewExampleDialog,
     DialogOverviewExampleDialog2,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    InputDialogComponent
   ],
   imports: [
     BrowserModule,
