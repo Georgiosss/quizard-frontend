@@ -1,1 +1,34 @@
 <button mat-raised-button (click)="importQuestions()">კითხვების იმპორტი</button>
+
+<h3>Upload File</h3>
+
+
+
+<mat-card class="card-wrapper">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>ფაილის ატვირთვა</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit()">
+            <div class="row">
+                <div class="col-sm-6 text-center">
+        
+                    <div class="custom-file">
+                        
+                        <button type="button" mat-raised-button (click)="fileInput.click()">აირჩიეთ ფაილი</button>
+                        <input hidden #fileInput type="file" class="custom-file-input" id="customFile" name="myfile"
+                            (change)="onFileSelect($event)" #UploadFileInput>
+                        <label class="custom-file-label" for="customFile">{{fileInputLabel}}</label>
+                    </div>
+        
+                </div>
+                <div class="col-sm-6 text-center">
+                    <button mat-raised-button type="submit">ატვირთვა</button>
+                </div>
+            </div>
+        </form>
+        
+        
+      </mat-card-content>
+</mat-card>
