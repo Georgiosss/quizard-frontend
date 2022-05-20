@@ -6,6 +6,8 @@ import * as _ from 'lodash';
 import { NotificationDialogService } from './../shared/notification-dialog/notification-dialog.service';
 import { QuestionsManagementService } from './questions-management.service';
 import { from } from 'rxjs';
+import { importQuestionsResponse } from './import-questions-response';
+import { AddQuestionsResponse } from './add-questions-response';
 
 @Component({
   selector: 'app-questions-management',
@@ -18,7 +20,7 @@ export class QuestionsManagementComponent implements OnInit {
   @ViewChild('UploadFileInput', { static: false }) uploadFileInput!: ElementRef;
   fileUploadForm!: FormGroup;
   fileInputLabel!: string;
-  foo!: string;
+  questionsName!: any;
 
   constructor(
     public inputDialogService: InputDialogService, 
@@ -36,7 +38,6 @@ export class QuestionsManagementComponent implements OnInit {
     let af = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      // console.log(file);
 
       if (!_.includes(af, file.type)) {
         this.notificationDialogService.open({title: "ფაილის ფორმატი ექსელი არ არის!", content: "გთხოვთ შეიყვანოთ ექსელის ფორმატის ფაილი"});
@@ -55,28 +56,21 @@ export class QuestionsManagementComponent implements OnInit {
     let form = this.fileUploadForm.get('myfile');
     console.log(form);
     if (form !== null && !form.value) {
-      this.notificationDialogService.open({title: "გთხოვთ შეიყვანოთ ვალიდური მონაცემები!", content: "მოწოდებული მონაცემები არასწორია"});
+      this.notificationDialogService.open({title: "შეცდომა!", content: "გთხოვ აირჩიოთ ფაილი!"});
       return false;
     }
 
     const formData = new FormData();
     if (form !== null) {
       formData.append('file', form.value);
+      formData.append('questionsName', this.questionsName);
     }
 
     if (form !== null) {
-      this.questionsManagementService.addQuestions(formData).subscribe((data: string) => this.foo = data);
+      this.questionsManagementService.addQuestions(formData).subscribe((data: AddQuestionsResponse) => {
+        this.notificationDialogService.open({title: "თქვენ წარმატებით ატვირთეთ კითხვები!", content: 'კითხვების კოდი: ' + data.questionsCode});
+      });
     }  
-    // this.http
-    //   .post<any>('http://www.example.com/api/upload', formData).subscribe(response => {
-    //     console.log(response);
-    //     if (response.statusCode === 200) {
-    //       this.uploadFileInput.nativeElement.value = "";
-    //       this.fileInputLabel = '';
-    //     }
-    //   }, error => {
-    //     console.log(error);
-    //   });
     return true;
   }
 
@@ -88,8 +82,10 @@ export class QuestionsManagementComponent implements OnInit {
       okButton: "კითხვების დამატება",
       input: ""
     }).afterClosed().subscribe((result: string) => {
-      console.log(result);
-      return result;
+      this.questionsManagementService.importQuestions(result).subscribe((data: importQuestionsResponse) => {
+        this.notificationDialogService.open({title: 'თქვენ წარმატებით დააიმპორტეთ კითხვები!', content: 'კითხვების სახელი: ' + data.questionsName});
+      });
+
     });;
   }
 

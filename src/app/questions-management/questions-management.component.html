@@ -1,34 +1,50 @@
-<button mat-raised-button (click)="importQuestions()">კითხვების იმპორტი</button>
+<div class="example-container">
 
-<h3>Upload File</h3>
+    <mat-card class="card-wrapper">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>ფაილის ატვირთვა</mat-card-title>
+        </mat-card-header>
 
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>კითხვების სახელი</mat-label>
+                <input matInput [(ngModel)]="questionsName">
+            </mat-form-field>
+            <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit()">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
 
+                        <div class="custom-file">
 
-<mat-card class="card-wrapper">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>ფაილის ატვირთვა</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit()">
-            <div class="row">
-                <div class="col-sm-6 text-center">
-        
-                    <div class="custom-file">
-                        
-                        <button type="button" mat-raised-button (click)="fileInput.click()">აირჩიეთ ფაილი</button>
-                        <input hidden #fileInput type="file" class="custom-file-input" id="customFile" name="myfile"
-                            (change)="onFileSelect($event)" #UploadFileInput>
-                        <label class="custom-file-label" for="customFile">{{fileInputLabel}}</label>
+                            <button type="button" mat-raised-button (click)="fileInput.click()">აირჩიეთ ფაილი</button>
+                            <input hidden #fileInput type="file" class="custom-file-input" id="customFile" name="myfile"
+                                (change)="onFileSelect($event)" #UploadFileInput>
+                            <label class="custom-file-label" for="customFile">{{fileInputLabel}}</label>
+                        </div>
+
                     </div>
-        
+                    <div class="button-wrapper">
+                        <button mat-raised-button type="submit">ატვირთვა</button>
+                    </div>
                 </div>
-                <div class="col-sm-6 text-center">
-                    <button mat-raised-button type="submit">ატვირთვა</button>
-                </div>
+            </form>
+
+
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="example-container">
+    <mat-card class="card-wrapper">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>იმპორტი</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="button-wrapper">
+                <button mat-raised-button (click)="importQuestions()">კითხვების იმპორტი</button>
             </div>
-        </form>
-        
-        
-      </mat-card-content>
-</mat-card>
+        </mat-card-content>
+    </mat-card>
+</div>
+

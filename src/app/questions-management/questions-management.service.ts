@@ -6,6 +6,8 @@ import {
 } from '@angular/common/http';
 import { config } from '../config';
 import { Router } from '@angular/router';
+import { AddQuestionsResponse } from './add-questions-response';
+import { importQuestionsResponse } from './import-questions-response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,11 @@ export class QuestionsManagementService {
 
   addQuestions(form: any): Observable<any> {
     let url = `${this.endpoint}/questions-management/add-questions`;
-    console.log("vashli");
-    return this.http.post<string>(url, form);
+    return this.http.post<AddQuestionsResponse>(url, form);
+  }
+
+  importQuestions(questionsCode: string): Observable<any> {
+    let url = `${this.endpoint}/questions-management/import-questions`;
+    return this.http.post<importQuestionsResponse>(url, questionsCode);
   }
 }
