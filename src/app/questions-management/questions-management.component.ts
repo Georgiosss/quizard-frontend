@@ -8,6 +8,8 @@ import { QuestionsManagementService } from './questions-management.service';
 import { from } from 'rxjs';
 import { importQuestionsResponse } from './import-questions-response';
 import { AddQuestionsResponse } from './add-questions-response';
+import { Router } from '@angular/router';
+import { Questions } from './questions';
 
 @Component({
   selector: 'app-questions-management',
@@ -21,18 +23,22 @@ export class QuestionsManagementComponent implements OnInit {
   fileUploadForm!: FormGroup;
   fileInputLabel!: string;
   questionsName!: any;
+  myQuestions!: Questions[];
 
   constructor(
     public inputDialogService: InputDialogService, 
     private http: HttpClient,
     private formBuilder: FormBuilder,
     private notificationDialogService: NotificationDialogService,
-    private questionsManagementService: QuestionsManagementService) { }
+    private questionsManagementService: QuestionsManagementService,
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.fileUploadForm = this.formBuilder.group({
       myfile: ['']
     });
+
+    this.questionsManagementService.getQuestions().subscribe((myQuestions: Questions[]) => this.myQuestions = myQuestions);
   }
   onFileSelect(event: any) {
     let af = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']
@@ -87,6 +93,10 @@ export class QuestionsManagementComponent implements OnInit {
       });
 
     });;
+  }
+
+  goToQuestions(questionsCode: string) {
+    this.router.navigate(['questions-editor', questionsCode]);
   }
 
 }

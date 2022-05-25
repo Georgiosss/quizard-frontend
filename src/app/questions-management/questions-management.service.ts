@@ -8,6 +8,7 @@ import { config } from '../config';
 import { Router } from '@angular/router';
 import { AddQuestionsResponse } from './add-questions-response';
 import { importQuestionsResponse } from './import-questions-response';
+import { Questions } from './questions';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,9 @@ export class QuestionsManagementService {
     let url = `${this.endpoint}/questions-management/import-questions`;
     return this.http.post<importQuestionsResponse>(url, questionsCode);
   }
+
+  getQuestions(): Observable<any> {
+    let url = `${this.endpoint}/questions-management/get-all-questions`;
+    return this.http.get<Questions>(url);
+  } 
 }

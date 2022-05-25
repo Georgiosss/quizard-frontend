@@ -23,6 +23,7 @@ import { DialogOverviewExampleDialog2 } from './my-classes/my-classes.component'
 import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
 import { InputDialogComponent } from './shared/input-dialog/input-dialog.component';
+import { QuestionsEditorComponent } from './questions-editor/questions-editor.component';
 
 
 
@@ -44,7 +45,8 @@ import { InputDialogComponent } from './shared/input-dialog/input-dialog.compone
     DialogOverviewExampleDialog,
     DialogOverviewExampleDialog2,
     NotificationDialogComponent,
-    InputDialogComponent
+    InputDialogComponent,
+    QuestionsEditorComponent
   ],
   imports: [
     BrowserModule,
