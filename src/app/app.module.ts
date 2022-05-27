@@ -24,6 +24,7 @@ import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
 import { InputDialogComponent } from './shared/input-dialog/input-dialog.component';
 import { QuestionsEditorComponent } from './questions-editor/questions-editor.component';
+import { GameComponent } from './game/game.component';
 
 
 
@@ -46,7 +47,8 @@ import { QuestionsEditorComponent } from './questions-editor/questions-editor.co
     DialogOverviewExampleDialog2,
     NotificationDialogComponent,
     InputDialogComponent,
-    QuestionsEditorComponent
+    QuestionsEditorComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

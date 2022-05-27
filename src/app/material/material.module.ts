@@ -13,6 +13,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const MaterialComponents = [
   MatButtonModule, 
@@ -29,6 +30,7 @@ const MaterialComponents = [
   MatSidenavModule,
   MatSelectModule,
   MatDialogModule,
+  MatGridListModule,
 ]
 
 @NgModule({
