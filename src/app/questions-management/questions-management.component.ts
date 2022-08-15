@@ -10,6 +10,7 @@ import { importQuestionsResponse } from './import-questions-response';
 import { AddQuestionsResponse } from './add-questions-response';
 import { Router } from '@angular/router';
 import { Questions } from './questions';
+import { AddQuestionsToQuestionsPackResponse } from './add-questions-to-questions-pack-response';
 
 @Component({
   selector: 'app-questions-management',
@@ -23,6 +24,7 @@ export class QuestionsManagementComponent implements OnInit {
   fileUploadForm!: FormGroup;
   fileInputLabel!: string;
   questionsName!: any;
+  questionsCode!: any;
   myQuestions!: Questions[];
 
   constructor(
@@ -75,6 +77,29 @@ export class QuestionsManagementComponent implements OnInit {
     if (form !== null) {
       this.questionsManagementService.addQuestions(formData).subscribe((data: AddQuestionsResponse) => {
         this.notificationDialogService.open({title: "თქვენ წარმატებით ატვირთეთ კითხვები!", content: 'კითხვების კოდი: ' + data.questionsCode});
+      });
+    }  
+    return true;
+  }
+
+
+  onFormSubmit2() {
+    let form = this.fileUploadForm.get('myfile');
+    console.log(form);
+    if (form !== null && !form.value) {
+      this.notificationDialogService.open({title: "შეცდომა!", content: "გთხოვ აირჩიოთ ფაილი!"});
+      return false;
+    }
+
+    const formData = new FormData();
+    if (form !== null) {
+      formData.append('file', form.value);
+      formData.append('questionsCode', this.questionsCode);
+    }
+
+    if (form !== null) {
+      this.questionsManagementService.addQuestionsToQuestionsPack(formData).subscribe((data: AddQuestionsToQuestionsPackResponse) => {
+        this.notificationDialogService.open({title: "თქვენ წარმატებით ატვირთეთ კითხვები!", content: ''});
       });
     }  
     return true;

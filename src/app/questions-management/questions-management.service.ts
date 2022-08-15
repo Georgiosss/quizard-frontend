@@ -14,12 +14,18 @@ import { Questions } from './questions';
   providedIn: 'root'
 })
 export class QuestionsManagementService {
+  
   endpoint: string = config.apiUrl;
   constructor(private http: HttpClient, public router: Router) { }
 
 
   addQuestions(form: any): Observable<any> {
     let url = `${this.endpoint}/questions-management/add-questions`;
+    return this.http.put<AddQuestionsResponse>(url, form);
+  }
+
+  addQuestionsToQuestionsPack(form: FormData) {
+    let url = `${this.endpoint}/questions-management/add-questions-to-questions-pack`;
     return this.http.post<AddQuestionsResponse>(url, form);
   }
 

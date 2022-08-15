@@ -34,6 +34,44 @@
         </mat-card-content>
     </mat-card>
 </div>
+
+<div class="example-container">
+
+    <mat-card class="card-wrapper">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>კითხვების დამატება</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>კითხვების კოდი</mat-label>
+                <input matInput [(ngModel)]="questionsCode">
+            </mat-form-field>
+            <form [formGroup]="fileUploadForm" (ngSubmit)="onFormSubmit2()">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+
+                        <div class="custom-file">
+
+                            <button type="button" mat-raised-button (click)="fileInput.click()">აირჩიეთ ფაილი</button>
+                            <input hidden #fileInput type="file" class="custom-file-input" id="customFile" name="myfile"
+                                (change)="onFileSelect($event)" #UploadFileInput>
+                            <label class="custom-file-label" for="customFile">{{fileInputLabel}}</label>
+                        </div>
+
+                    </div>
+                    <div class="button-wrapper">
+                        <button mat-raised-button type="submit">ატვირთვა</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </mat-card-content>
+    </mat-card>
+</div>
+
 <div class="example-container">
     <mat-card class="card-wrapper">
         <mat-card-header>
