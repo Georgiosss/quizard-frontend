@@ -109,8 +109,8 @@ export class TttComponent implements OnInit {
         this.stompClient.send("/app/hello", {}, JSON.stringify(message));
     }
 
-    onMessageReceived(message: any) {
-        console.log("Message Recieved from Server :: " + message);
+    onMessageReceived(game: Game) {
+        this.game = game;
     }
 
 }
