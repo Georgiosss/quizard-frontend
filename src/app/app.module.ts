@@ -25,6 +25,8 @@ import { NotificationDialogComponent } from './shared/notification-dialog/notifi
 import { InputDialogComponent } from './shared/input-dialog/input-dialog.component';
 import { QuestionsEditorComponent } from './questions-editor/questions-editor.component';
 import { GameComponent } from './game/game.component';
+import { TttComponent } from './ttt/ttt.component';
+import { GameService } from './shared/game.service';
 
 
 
@@ -48,7 +50,8 @@ import { GameComponent } from './game/game.component';
     NotificationDialogComponent,
     InputDialogComponent,
     QuestionsEditorComponent,
-    GameComponent
+    GameComponent,
+    TttComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { GameComponent } from './game/game.component';
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true
+    multi: true,
   }],
   bootstrap: [AppComponent]
 })

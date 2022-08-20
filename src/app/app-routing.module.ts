@@ -13,6 +13,7 @@ import { MyClassComponent } from './my-class/my-class.component';
 import { AuthGuard } from './shared/auth.guard';
 import { QuestionsEditorComponent } from './questions-editor/questions-editor.component';
 import { GameComponent } from './game/game.component';
+import { TttComponent } from './ttt/ttt.component';
 
 const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'game', component: GameComponent},
   {path: 'questions-editor/:questionsCode', component: QuestionsEditorComponent},
   {path: 'my-classes', component: MyClassesComponent},
+  {path: 'ttt', component: TttComponent},
   { path: '', component: LoginComponent},
   { path: 'main-page', component: MainPageComponent, canActivate: [AuthGuard]},
   {

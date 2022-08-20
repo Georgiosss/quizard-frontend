@@ -1,0 +1,22 @@
+<div class="card"> 
+    <button mat-raised-button color="primary" class="spacer" (click)="createGame()">თამაშის შექმნა</button>
+    <button mat-raised-button color="primary" class="spacer" (click)="joinGame()">თამაშში შესვლა</button>
+</div>
+
+
+<div class="card" *ngIf="game"> 
+    
+    <mat-card class="example-card" >
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>აწკაპუნე 10-მდე</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h1>{{game.number}}</h1>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="click()">კლიკ</button>
+              </mat-card-actions>
+          </mat-card-content>
+    </mat-card>
+    
+    </div>
