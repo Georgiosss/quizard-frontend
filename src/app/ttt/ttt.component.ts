@@ -63,7 +63,7 @@ export class TttComponent implements OnInit {
   click() {
     let url = `${this.endpoint}/game/gameplay`;
     this.http.post<Game>(url, {gameId: this.game.gameId}).subscribe((game: Game) => {
-      this.game = game;
+      
     })
   }
 
@@ -79,7 +79,9 @@ export class TttComponent implements OnInit {
         _this.stompClient.connect({}, function (frame: any) {
             console.log(_this.topic + game);
             _this.stompClient.subscribe(_this.topic + game, function (sdkEvent: any) {
-                _this.onMessageReceived(sdkEvent);
+                console.log("first time");
+                console.log(sdkEvent);
+                _this.onMessageReceived(JSON.parse(sdkEvent.body));
             });
             //_this.stompClient.reconnect_delay = 2000;
         }, this.errorCallBack);
@@ -110,7 +112,7 @@ export class TttComponent implements OnInit {
     }
 
     onMessageReceived(game: Game) {
-        this.game = game;
+      this.game = game;
     }
 
 }
