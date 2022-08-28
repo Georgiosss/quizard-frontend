@@ -1,5 +1,16 @@
 <div *ngIf="authService.isLoggedIn">
-    <mat-card class="example-card">
-        გამარჯობა, შენი მეილი: {{currentUser.email}}, შენი როლები: {{currentUser.roles}}
-    </mat-card>
+    <div class="logo-image"></div>
+    <div class="card" style="text-align: center;"> 
+        <mat-card class="example-card" >
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>თამაშის კოდი</mat-label>
+                    <input matInput [(ngModel)]="gameId">
+                </mat-form-field>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="joinGame()">თამაშში შესვლა</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
