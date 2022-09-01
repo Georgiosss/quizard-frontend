@@ -12,7 +12,7 @@ import { Territory } from './model/territory';
 })
 export class GameComponent implements OnInit {
 
-  game!: Game;
+  game: Game = new Game();
   stompClient!: any;
   topic: string = "/topic/game/";
 
@@ -33,6 +33,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.joinGame(this.actRoute.snapshot.paramMap.get('gameId'));
+  
     const element = document.getElementById('map');
     if (element != undefined) {
       element.style.transform = "scale(" + (window.innerWidth / 2000) + ")";
@@ -45,6 +46,8 @@ export class GameComponent implements OnInit {
       }
     })
   }
+
+  //topic/game/123
 
   ngOnDestroy() {
     this.resizeSubscription$.unsubscribe()
@@ -65,7 +68,7 @@ export class GameComponent implements OnInit {
 
   onMessageReceived(game: Game) {
     this.game = game;
-    console.log("AAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(this.game);
     this.updateGame();
   }
 

@@ -35,7 +35,7 @@ export class TttComponent implements OnInit {
   }
 
   createGame() {
-    let url = `${this.endpoint}/game/start`;
+    let url = `${this.endpoint}/game/create`;
     this.http.post<Game>(url, "asd").subscribe((game: Game) => {
       this.game = game;
       this._connect(game.gameId);

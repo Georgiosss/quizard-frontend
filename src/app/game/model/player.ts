@@ -1,6 +1,9 @@
 export class Player {
     userId!: number;
     fullName!: string;
-    color!: number;
+    email!: string;
+    color!: string;
     score!: number;
+    active!: Boolean;
+    territoryToChoose!: Boolean;
 }
