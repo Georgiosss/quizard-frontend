@@ -35,7 +35,7 @@ export class GameService {
   }
 
   clickTerritory(gameId: string, territoryId: string) {
-    let url = `${this.endpoint}/game/gameplay`;
+    let url = `${this.endpoint}/game/gameplay/chooseTerritory`;
     return this.http.post<Game>(url, {territoryId: territoryId, gameId: gameId});
   }
 

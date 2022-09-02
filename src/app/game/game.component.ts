@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, Observable, Subscription } from "rxjs";
+import { GameQuestionService } from '../game-question/game-question.service';
 import { GameService } from './game.service';
 import { Game } from './model/game';
 import { Territory } from './model/territory';
@@ -27,6 +28,7 @@ export class GameComponent implements OnInit {
 
   constructor(private actRoute: ActivatedRoute,
     private gameService: GameService,
+    private gameQuestionService: GameQuestionService
     ) { 
       
     }
@@ -75,7 +77,7 @@ export class GameComponent implements OnInit {
   clickTerritory(event: MouseEvent) {
     let id = (event.target as Element).id;
     this.gameService.clickTerritory(this.game.gameId, id).subscribe((game: Game) => {
-
+      this.gameQuestionService.open(this.game.question);
     });
   }
 

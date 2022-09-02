@@ -27,6 +27,7 @@ import { QuestionsEditorComponent } from './questions-editor/questions-editor.co
 import { GameComponent } from './game/game.component';
 import { TttComponent } from './ttt/ttt.component';
 import { GameService } from './shared/game.service';
+import { GameQuestionComponent } from './game-question/game-question.component';
 
 
 
@@ -52,6 +53,7 @@ import { GameService } from './shared/game.service';
     QuestionsEditorComponent,
     GameComponent,
     TttComponent,
+    GameQuestionComponent,
   ],
   imports: [
     BrowserModule,
