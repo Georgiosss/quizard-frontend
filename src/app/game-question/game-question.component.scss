@@ -1,0 +1,33 @@
+
+
+.card {
+    display:flex; 
+    flex-wrap: wrap; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-child {
+    max-width: 300px;
+    width: 100%;
+
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.mat-card {
+    background: #3f51b5;
+ }

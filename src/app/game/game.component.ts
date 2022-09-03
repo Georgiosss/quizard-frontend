@@ -77,6 +77,8 @@ export class GameComponent implements OnInit {
   clickTerritory(event: MouseEvent) {
     let id = (event.target as Element).id;
     this.gameService.clickTerritory(this.game.gameId, id).subscribe((game: Game) => {
+      console.log("AAAAAAAAAA");
+      console.log(game);
       this.gameQuestionService.open(this.game.question);
     });
   }

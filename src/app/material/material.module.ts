@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatRadioModule} from '@angular/material/radio';
 
 const MaterialComponents = [
   MatButtonModule, 
@@ -33,6 +34,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatGridListModule,
   MatDividerModule,
+  MatRadioModule,
 ]
 
 @NgModule({
