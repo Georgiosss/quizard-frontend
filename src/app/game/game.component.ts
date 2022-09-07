@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, Observable, Subscription } from "rxjs";
 import { GameQuestionService } from '../game-question/game-question.service';
@@ -11,7 +11,7 @@ import { Territory } from './model/territory';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, AfterViewInit {
 
   game: Game = new Game();
   stompClient!: any;
@@ -33,6 +33,8 @@ export class GameComponent implements OnInit {
       
     }
 
+  //@ViewChild('vashli', {static: false}) vashli: ElementRef;
+
   ngOnInit(): void {
     this.joinGame(this.actRoute.snapshot.paramMap.get('gameId'));
   
@@ -47,17 +49,23 @@ export class GameComponent implements OnInit {
         element.style.transform = "scale(" + (window.innerWidth / 2000) + ")";
       }
     })
+
+  }
+
+  ngAfterViewInit(): void {
+    this.updateGame();
   }
 
   //topic/game/123
 
   ngOnDestroy() {
-    this.resizeSubscription$.unsubscribe()
+   
   }
 
   joinGame(gameId: string | null) {
     this.gameService.joinGame(gameId).subscribe((game: Game) => {
-      this.game = game;
+      this.onMessageReceived(game);
+      console.log(this.game);
       const _this = this;
       _this.stompClient = this.gameService.connect(gameId);
       _this.stompClient.connect({}, function (frame: any) {
@@ -69,30 +77,43 @@ export class GameComponent implements OnInit {
   }
 
   onMessageReceived(game: Game) {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(game);
     this.game = game;
-    console.log(this.game);
     this.updateGame();
   }
 
   clickTerritory(event: MouseEvent) {
     let id = (event.target as Element).id;
     this.gameService.clickTerritory(this.game.gameId, id).subscribe((game: Game) => {
-      console.log("AAAAAAAAAA");
-      console.log(game);
       this.gameQuestionService.open(this.game.question);
     });
   }
 
   updateGame() {
-    console.log(this.game);
-    this.game.territories.forEach((value: Territory) => {
-      const element = document.getElementById(value.territoryId);
-      if (element != undefined) {
-        if (value.color !== "TRANSPARENT") {
-          element.style.fill = this.colors[value.color]; 
+    if (this.game.askQuestion) {
+      this.gameQuestionService.open(this.game.question).afterClosed().subscribe((data: any) => {
+        console.log("hahahahaha");
+        console.log(data);
+      });
+    }
+  }
+
+  getTerritoryColor(id: string) {
+    if (this.game.gameStarted) {
+      if (Array.isArray(this.game.territories)) {
+        for (let i = 0; i < this.game.territories.length; i++) {
+          if (this.game.territories[i].territoryId.toString() === id) {
+            return this.colors[this.game.territories[i].color];
+          }
         }
       }
-    })
+    }
+    return "#8a00f4";
+  }
+
+  openQuestion() {
+    
   }
 
   

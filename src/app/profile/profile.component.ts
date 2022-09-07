@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Profile } from './profile';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  profile!: Profile;
+
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
+      this.profileService.getProfile().subscribe((data: Profile) => {
+        this.profile = data;
+      });
+  }
+
+  edit() {
+
   }
 
 }

@@ -1,23 +1,38 @@
 <h1 mat-dialog-title>{{data.question.question}}</h1>
 
-<div *ngIf="data.question.questionType==='SINGLE'; then singleBlock else multipleBlock"></div>
+<div *ngIf="data.question.choices === undefined; then singleBlock else multipleBlock"></div>
 
         <ng-template #singleBlock> 
+            <div class="card"> 
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>პასუხი</mat-label>
+                        <input matInput [(ngModel)]="intAnswer">
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="write()">პასუხი</button>
+                    </mat-card-actions>
+                </mat-card-content>
+            </div>
 
+            <div mat-dialog-actions>
+                <button id="single" mat-button [mat-dialog-close]="intAnswer" cdkFocusInitial>Ok</button>
+            </div>
         </ng-template>
 
         <ng-template #multipleBlock> 
 
             <div class="card"> 
-                <mat-card color="blue" class="card-child" *ngFor="let option of data.question.choices" (click)="click(option.value)">
-                    <mat-card-content>
+                <mat-card class="card-child" *ngFor="let option of data.question.choices" (click)="click(option.value)">
+                    <mat-card-content color="blue">
                         <h3> {{option.value}}</h3>
                     </mat-card-content>
                 </mat-card>    
             </div>
 
+            <div mat-dialog-actions>
+                <button id="mult" mat-button [mat-dialog-close]="answer" cdkFocusInitial>Ok</button>
+            </div>
+
         </ng-template>
 
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>დახურვა</button>
-</div>

@@ -1,1 +1,17 @@
-<p>საბაა ქენი პროფილი!</p>
+<div class="logo-image"></div>
+<div class="card" style="text-align: center;"> 
+    <mat-card class="example-card" >
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item><mat-icon>person</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{profile.username}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><mat-icon>email</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{profile.email}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item><mat-icon>assignment_ind</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{profile.roles[0]}}</mat-list-item>
+            </mat-list>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="edit()"><mat-icon>edit</mat-icon>     რედაქტირება</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</div>

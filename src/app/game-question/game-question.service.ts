@@ -8,9 +8,13 @@ import { GameQuestionComponent } from './game-question.component';
 })
 export class GameQuestionService {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) { 
+
+  }
 
   public open(data: GameQuestion) {
     return this.dialog.open(GameQuestionComponent, {data});
   } 
+
+ 
 }

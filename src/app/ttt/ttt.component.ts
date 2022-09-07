@@ -36,10 +36,10 @@ export class TttComponent implements OnInit {
 
   createGame() {
     let url = `${this.endpoint}/game/create`;
-    this.http.post<Game>(url, "asd").subscribe((game: Game) => {
+    this.http.post<any>(url, "asd").subscribe((game: any) => {
       this.game = game;
       this._connect(game.gameId);
-      this.notificationDialogService.open({title: "თქვენი თამაშის კოდი:", content: game.gameId});
+      this.notificationDialogService.open({title: "თქვენი თამაშის კოდი:", content: game});
     })
   }
 

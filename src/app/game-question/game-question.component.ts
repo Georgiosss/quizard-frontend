@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { GameQuestion } from '../game/model/game-question';
 import { MultipleChoiceQuestion } from '../game/model/multiple-choice-question';
@@ -12,6 +12,7 @@ import { SingleChoiceQuestion } from '../game/model/single-choice-question';
 export class GameQuestionComponent implements OnInit {
 
   answer!: string;
+  intAnswer!: number; 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: GameQuestion) { }
 
@@ -20,7 +21,18 @@ export class GameQuestionComponent implements OnInit {
   
 
   click(answer: string) {
-    alert(answer);
+    this.answer = answer;
+    var button = document.getElementById('mult');
+    if (button !== null) {
+      button.click();
+    }
+  }
+  write() {
+    var button = document.getElementById('single');
+    console.log(button);
+    if (button !== null) {
+      button.click();
+    }
   }
 
 }
