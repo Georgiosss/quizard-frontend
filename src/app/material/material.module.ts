@@ -17,6 +17,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatListModule} from '@angular/material/list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialComponents = [
   MatButtonModule, 
@@ -37,6 +40,9 @@ const MaterialComponents = [
   MatDividerModule,
   MatRadioModule,
   MatListModule,
+  MatProgressBarModule,
+  MatTreeModule,
+  MatCheckboxModule,
 ]
 
 @NgModule({

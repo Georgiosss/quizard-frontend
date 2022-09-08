@@ -11,6 +11,7 @@ import { AddQuestionsResponse } from './add-questions-response';
 import { Router } from '@angular/router';
 import { Questions } from './questions';
 import { AddQuestionsToQuestionsPackResponse } from './add-questions-to-questions-pack-response';
+import { CreateGameService } from '../create-game/create-game.service';
 
 @Component({
   selector: 'app-questions-management',
@@ -33,7 +34,8 @@ export class QuestionsManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private notificationDialogService: NotificationDialogService,
     private questionsManagementService: QuestionsManagementService,
-    private router: Router,) { }
+    private router: Router,
+    private createGameService: CreateGameService) { }
 
   ngOnInit(): void {
     this.fileUploadForm = this.formBuilder.group({
@@ -122,6 +124,10 @@ export class QuestionsManagementComponent implements OnInit {
 
   goToQuestions(questionsCode: string) {
     this.router.navigate(['questions-editor', questionsCode]);
+  }
+
+  createGame(myQuestionsCode: string) {
+    this.createGameService.open(myQuestionsCode);
   }
 
 }

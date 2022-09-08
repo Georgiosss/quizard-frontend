@@ -1,16 +1,26 @@
 <div *ngIf="authService.isLoggedIn">
-    <div class="logo-image"></div>
-    <div class="card" style="text-align: center;"> 
-        <mat-card class="example-card" >
-            <mat-card-content>
-                <mat-form-field appearance="fill">
-                    <mat-label>თამაშის კოდი</mat-label>
-                    <input matInput [(ngModel)]="gameId">
-                </mat-form-field>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="joinGame()">თამაშში შესვლა</button>
-                </mat-card-actions>
-            </mat-card-content>
-        </mat-card>
+    <div *ngIf="starWars">
+        <div id="scripts">  
+            <div id="content">
+                <p>და ადგა დავით, მეფე აფხაზთა, ქართველთა, რანთა, კახთა და სომეხთა მეფისა, და შარვანშა და შაჰინშა, და ყოვლისა აღმოსავლეთისა და დასავლეთისა და ბრძანა მეფემ ჩახერგეთ გზები უკან დასახევი. და იყო ბრძოლა, იყო დიდგორი, ძლევაი საკვირველი.</p>        
+            </div>  
+        </div>
+    </div>
+
+    <div *ngIf="!starWars">
+        <div class="logo-image"></div>
+        <div class="card" style="text-align: center;"> 
+            <mat-card class="example-card" >
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>თამაშის კოდი</mat-label>
+                        <input matInput [(ngModel)]="gameId">
+                    </mat-form-field>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="joinGame()">თამაშში შესვლა</button>
+                    </mat-card-actions>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>

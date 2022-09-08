@@ -28,6 +28,7 @@ import { GameComponent } from './game/game.component';
 import { TttComponent } from './ttt/ttt.component';
 import { GameService } from './shared/game.service';
 import { GameQuestionComponent } from './game-question/game-question.component';
+import { CreateGameComponent } from './create-game/create-game.component';
 
 
 
@@ -54,6 +55,7 @@ import { GameQuestionComponent } from './game-question/game-question.component';
     GameComponent,
     TttComponent,
     GameQuestionComponent,
+    CreateGameComponent,
   ],
   imports: [
     BrowserModule,

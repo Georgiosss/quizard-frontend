@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { GameQuestion } from '../game/model/game-question';
 import { GameQuestionComponent } from './game-question.component';
 
@@ -8,12 +8,16 @@ import { GameQuestionComponent } from './game-question.component';
 })
 export class GameQuestionService {
 
-  constructor(public dialog: MatDialog) { 
+  myDialog!: MatDialogRef<GameQuestionComponent>;
 
+  constructor(public dialog: MatDialog) { 
+    
   }
 
   public open(data: GameQuestion) {
-    return this.dialog.open(GameQuestionComponent, {data});
+    this.myDialog = this.dialog.open(GameQuestionComponent, {data});
+    this.myDialog.disableClose = true;
+    return this.myDialog;
   } 
 
  

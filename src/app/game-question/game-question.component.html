@@ -1,3 +1,10 @@
+<mat-card *ngIf="countdown" class="example-card-score">
+    <mat-card-header>
+        <div mat-card-avatar><mat-icon>timer</mat-icon></div>
+        <mat-card-title>{{countdownNumber}}</mat-card-title>
+    </mat-card-header>
+</mat-card>
+
 <h1 mat-dialog-title>{{data.question.question}}</h1>
 
 <div *ngIf="data.question.choices === undefined; then singleBlock else multipleBlock"></div>
@@ -7,31 +14,23 @@
                 <mat-card-content>
                     <mat-form-field appearance="fill">
                         <mat-label>პასუხი</mat-label>
-                        <input matInput [(ngModel)]="intAnswer">
+                        <input type="number" matInput [(ngModel)]="answer">
                     </mat-form-field>
                     <mat-card-actions>
                         <button mat-raised-button color="primary" (click)="write()">პასუხი</button>
                     </mat-card-actions>
                 </mat-card-content>
             </div>
-
-            <div mat-dialog-actions>
-                <button id="single" mat-button [mat-dialog-close]="intAnswer" cdkFocusInitial>Ok</button>
-            </div>
         </ng-template>
 
         <ng-template #multipleBlock> 
 
             <div class="card"> 
-                <mat-card class="card-child" *ngFor="let option of data.question.choices" (click)="click(option.value)">
+                <mat-card class="card-child" *ngFor="let option of data.question.choices; let i = index" (click)="click(i)">
                     <mat-card-content color="blue">
                         <h3> {{option.value}}</h3>
                     </mat-card-content>
                 </mat-card>    
-            </div>
-
-            <div mat-dialog-actions>
-                <button id="mult" mat-button [mat-dialog-close]="answer" cdkFocusInitial>Ok</button>
             </div>
 
         </ng-template>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
   currentUser: User;
   gameId!: string;
+  starWars: boolean = false;
 
   constructor(public authService: AuthService,
     private router: Router,) {
@@ -21,7 +22,11 @@ export class MainPageComponent implements OnInit {
   }
 
   joinGame() {
-    this.router.navigate(['game', this.gameId]);
+    this.starWars = true;
+    setTimeout(
+      () => {
+        this.router.navigate(['game', this.gameId]);
+      }, 20000);
   }
 
 }

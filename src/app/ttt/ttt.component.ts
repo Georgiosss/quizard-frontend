@@ -25,7 +25,11 @@ export class TttComponent implements OnInit {
   stompClient: any;
   endpoint: string = config.apiUrl;
   webSocketEndPoint: string = `${this.endpoint}/ws`;
+  startText: boolean = false;
 
+
+  sequence = ["RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", ];
+  turn: number = 0;
   constructor(public inputDialogService: InputDialogService,
     private notificationDialogService: NotificationDialogService, 
     public boardService: GameService,private http: HttpClient, public router: Router) { }
@@ -34,13 +38,52 @@ export class TttComponent implements OnInit {
    
   }
 
+  do(i: number) {
+    var elem = document.getElementById('test' + i);
+      if (elem !== null) {
+        var $test = elem.innerHTML, $html = '', $i;
+  
+        for ($i = 0; $i < $test.length; $i++) {
+          $html += '<span style="animation: foo ' + $i + 's">' + ($test[$i]) + '</span>';
+        }
+        elem.innerHTML = $html;
+      }
+  }
+
+  doNothing() {
+  
+  }
+
   createGame() {
+    this.turn++;
+    const elem = document.getElementById(this.turn.toString());
+    if (elem) {
+      elem.style.backgroundColor = "#000000";
+    }
+    /*
+    let observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry: any) => {
+                        if (entry.intersectionRatio) {
+                            entry.target.opacity = '1'
+                            observer.unobserve(entry.target)
+                        }
+                    })
+                },
+                { rootMargin: '0px 0px 100px 0px' },
+            )
+            document.querySelectorAll('span').forEach((span) => {
+                observer.observe(span)
+            })
+    
+    
     let url = `${this.endpoint}/game/create`;
     this.http.post<any>(url, "asd").subscribe((game: any) => {
       this.game = game;
       this._connect(game.gameId);
       this.notificationDialogService.open({title: "თქვენი თამაშის კოდი:", content: game});
     })
+    */
   }
 
   joinGame() {
