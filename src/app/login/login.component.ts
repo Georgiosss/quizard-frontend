@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationDialogService } from '../shared/notification-dialog/notification-dialog.service';
 import { User } from '../shared/user';
 import { AuthService } from './../shared/auth.service';
 
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
   registrationUserName = '';
   registrationPassword = '';
   registrationEmail = '';
-  constructor(public authService: AuthService) { 
+  constructor(public authService: AuthService,
+    public notificaitonService: NotificationDialogService) { 
     
   }
 
@@ -45,8 +47,7 @@ export class LoginComponent implements OnInit {
     user.password = this.registrationPassword;
     user.roles = [this.role];
     this.authService.signUp(user).subscribe((res) => {
-      console.log(res.message);
-      alert("სააღოლ, გაიარე!");
+      this.notificaitonService.open({title: "თქვენ წარმატებით გაიარეთ რეგისტრაცია!", content: "არ დაგავიწყდეს: ცოდნა, შრომა, თავისუფლება!"});
     });
   }
 
