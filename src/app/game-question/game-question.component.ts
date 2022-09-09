@@ -45,12 +45,14 @@ export class GameQuestionComponent implements OnInit {
     if (!answer) {
       answer = 0;
     }
+    clearInterval(this.interval);
     this.gameQuestionService.myDialog.close({answer: answer, type: 1});
   }
   write() {
     if (!this.answer) {
       this.answer = 0;
     }
+    clearInterval(this.interval);
     this.gameQuestionService.myDialog.close({answer: this.answer, type: 0});
   }
 

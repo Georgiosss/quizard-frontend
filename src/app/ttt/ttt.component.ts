@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { Game } from './game';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import { Player } from '../game/model/player';
 
 @Component({
   selector: 'app-ttt',
@@ -26,7 +27,7 @@ export class TttComponent implements OnInit {
   endpoint: string = config.apiUrl;
   webSocketEndPoint: string = `${this.endpoint}/ws`;
   startText: boolean = false;
-
+  players: Player[] = [];
 
   sequence = ["RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", "RED",  "RED", ];
   turn: number = 0;
@@ -35,7 +36,21 @@ export class TttComponent implements OnInit {
     public boardService: GameService,private http: HttpClient, public router: Router) { }
 
   ngOnInit(): void {
-   
+   this.players.push({
+    fullName: "გიორგი ნიგალიძე",
+    score: 1000,
+    color: "RED"
+   });
+   this.players.push({
+    fullName: "გიორგი არა ნიგალიძე",
+    score: 800,
+    color: "BLUE"
+   });
+   this.players.push({
+    fullName: "არა გიორგი ნიგალიძე",
+    score: 600,
+    color: "GREEN"
+   });
   }
 
   do(i: number) {

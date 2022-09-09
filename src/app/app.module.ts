@@ -29,6 +29,7 @@ import { TttComponent } from './ttt/ttt.component';
 import { GameService } from './shared/game.service';
 import { GameQuestionComponent } from './game-question/game-question.component';
 import { CreateGameComponent } from './create-game/create-game.component';
+import { BattleResultComponent } from './battle-result/battle-result.component';
 
 
 
@@ -56,6 +57,7 @@ import { CreateGameComponent } from './create-game/create-game.component';
     TttComponent,
     GameQuestionComponent,
     CreateGameComponent,
+    BattleResultComponent,
   ],
   imports: [
     BrowserModule,

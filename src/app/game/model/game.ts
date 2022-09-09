@@ -13,7 +13,7 @@ export class Game {
     availableTerritories!: number[];
     sequence!: string[];
     turn!: number;
-    
+
     gameEnded: Boolean = false;
     finalResults!: Player[];
 

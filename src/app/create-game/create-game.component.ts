@@ -25,6 +25,10 @@ export class CreateGameComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<ClassNode>();
   userIds: number[] = [];
   content: string = '';
+  choose: boolean = false;
+  codes: boolean = false;
+  distribution!: any;
+  spinner: boolean = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public questionsCode: any,
   public createGameService: CreateGameService,
@@ -34,6 +38,7 @@ export class CreateGameComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.spinner = true;
     const myData: ClassNode[] = [];
     this.myClassesService.getMyClasses().subscribe((data: MyClassGeneralInfo[]) => {
       console.log(data);
@@ -47,7 +52,8 @@ export class CreateGameComponent implements OnInit {
           myData.push({name: data[i].className, children: myStudents});
           if (myData.length == data.length) {
             this.dataSource.data = myData;
-            console.log(myData);
+            this.choose = true;
+            this.spinner = false;
           }
         });
       }
@@ -73,8 +79,12 @@ export class CreateGameComponent implements OnInit {
   }
 
   createGame() {
+      this.choose = false;
+      this.spinner = true;
       this.createGameService.createGame({questionPackCode: this.questionsCode.value, userIds: this.userIds}).subscribe((data: any) => {
-        this.content = data.toString();
+        this.codes = true;
+        this.distribution = data.gameDistribution;
+        this.spinner = false;
       });
   }
 

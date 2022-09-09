@@ -1,0 +1,31 @@
+
+<div style="text-align: center;"> 
+    <mat-card-header>
+        <div mat-card-avatar><mat-icon>check</mat-icon></div>
+        <mat-card-title><h1 style="font-size: 30px">სწორი პასუხი - {{data.battleResult.gameAnswer.answer}}</h1></mat-card-title>
+    </mat-card-header>    
+    <mat-card-content>
+        
+        <div class="card-score2"> 
+            <mat-card class="example-card-score2" *ngFor="let answer of data.battleResult.playerAnswers; let i = index">
+                <mat-card-header>
+                    <div mat-card-avatar class={{answer.player.color}}></div>
+                    <mat-card-title>{{answer.player.fullName}}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-list>
+                        
+                        <mat-list-item><mat-icon>flare</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{answer.gameAnswer.answer}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><mat-icon>timer</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{answer.seconds}}</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><mat-icon>show_chart</mat-icon>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{answer.score}}</mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+    </mat-card-content>
+</div>

@@ -1,13 +1,24 @@
-<div class="card"> 
-    <button mat-raised-button color="primary" class="spacer" (click)="createGame()">თამაშის შექმნა</button>
-    <button mat-raised-button color="primary" class="spacer" (click)="joinGame()">თამაშში შესვლა</button>
+
+
+<div class="card2" style="text-align: center;"> 
+    <mat-card class="example-card2">
+        <mat-card-header>
+            <mat-card-title><h1 style="font-size: 30px">გასრულდა ესე ამბავი, ვითა სიზმარი ღამისა</h1></mat-card-title>
+        </mat-card-header>    
+        <mat-card-content>
+            
+            <div class="card-score2"> 
+                <mat-card class="example-card-score2" *ngFor="let player of players; let i = index">
+                    <mat-card-header>
+                        <div mat-card-avatar class={{player.color}}></div>
+                        <mat-card-title>{{player.fullName}}&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;{{player.score}}</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+
+
+        </mat-card-content>
+    </mat-card>
+
 </div>
-
-
-<ul class="circle">
-    <li *ngFor="let color of sequence; let i = index">
-      <div class="text" [id]="i">{{color}}</div>
-    </li>
-<ul>
-
 

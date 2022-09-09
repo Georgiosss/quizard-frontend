@@ -10,6 +10,7 @@ import { Territory } from './model/territory';
 import { AuthService } from '../shared/auth.service';
 import { User } from '../shared/user';
 import { Router } from '@angular/router';
+import { BattleResultService } from '../battle-result/battle-result.service';
 
 @Component({
   selector: 'app-game',
@@ -44,6 +45,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   constructor(private actRoute: ActivatedRoute,
     private gameService: GameService,
     private gameQuestionService: GameQuestionService,
+    private battleResultService: BattleResultService,
     public authService: AuthService,
     private router: Router,
     ) { 
@@ -175,6 +177,7 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   startCountDown() {
     if (this.game.territoryToChoose) {
+      this.updatePlayerTurn();
       this.countdown = true;
       this.countdownNumber = 10;
       this.interval = setInterval(() => {
@@ -198,19 +201,9 @@ export class GameComponent implements OnInit, AfterViewInit {
     return this.colors[this.game.sequence[id]];
   }
 
-
-
-  updateGame() {
-    this.countdown = false;
-    this.countdownNumber = 10;
-    clearInterval(this.interval);
-    this.resetTerritoryStyles();
-    this.colorAvailableTerritories();
-    this.updatePlayerTurn();
-    this.startCountDown();
-
-    if (this.game.askQuestion) {
-      const now = new Date().getTime();  
+  askQuestion() {
+    const now = new Date().getTime();  
+    document.body.classList.remove('disabled');
       this.gameQuestionService.open(this.game.question).afterClosed().subscribe((data: any) => {
         this.gameService.answer({
           gameId: this.game.gameId,
@@ -224,7 +217,42 @@ export class GameComponent implements OnInit, AfterViewInit {
           console.log(this.game);
         }); 
       });
+  }
+
+  showBattleResult() {
+    if (this.game.battleResult) {
+      document.body.classList.remove('disabled');
+      this.battleResultService.open(this.game).afterClosed().subscribe(() => {
+       
+      });
     }
+  }
+
+  updateGame() {
+    this.countdown = false;
+    this.countdownNumber = 10;
+    clearInterval(this.interval);
+    this.resetTerritoryStyles();
+    this.colorAvailableTerritories();
+    if (this.game.battleResult) {
+      setTimeout(() => {
+        this.startCountDown();
+      }, 11000);
+    } else {
+      this.startCountDown();
+    }
+    this.showBattleResult();
+
+    if (this.game.askQuestion) {
+      if (this.game.battleResult) {
+        setTimeout(() => {
+          this.askQuestion();
+        }, 15000);
+      } else {
+        this.askQuestion();
+      }
+      
+    } 
   }
 
   openQuestion() {
