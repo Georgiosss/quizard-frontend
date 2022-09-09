@@ -36,21 +36,46 @@ export class TttComponent implements OnInit {
     public boardService: GameService,private http: HttpClient, public router: Router) { }
 
   ngOnInit(): void {
-   this.players.push({
-    fullName: "გიორგი ნიგალიძე",
-    score: 1000,
-    color: "RED"
-   });
-   this.players.push({
-    fullName: "გიორგი არა ნიგალიძე",
-    score: 800,
-    color: "BLUE"
-   });
-   this.players.push({
-    fullName: "არა გიორგი ნიგალიძე",
-    score: 600,
-    color: "GREEN"
-   });
+    var elem = document.getElementById('tow1');
+    if (elem !== null) {
+      elem.style.top = "100px";
+      elem.style.left = "100px";
+      elem.style.position = "fixed";
+    }
+  }
+
+  territories = [
+    {id: "1", castle: 3},
+    {id: "2", castle: 1},
+    {id: "3", castle: 2},
+    {id: "4", castle: 1},
+    {id: "5", castle: 1},
+    {id: "6", castle: 2},
+    {id: "7", castle: 1},
+    {id: "8", castle: 1},
+    {id: "9", castle: 3},
+    {id: "10", castle: 1},
+    {id: "11", castle: 2},
+    {id: "12", castle: 1},
+  ]
+
+  ngAfterViewInit() {
+    for (let i = 0; i < this.territories.length; i++) {
+      const ter = this.territories[i];
+      const elem = document.getElementById('tow' + ter.id.toString());
+      if (elem !== null) {
+        const elem2 = document.getElementById(ter.id.toString());
+        if (elem2 !== null) {
+          let x = (elem2.getBoundingClientRect().right + elem2.getBoundingClientRect().left) / 2;
+        let y = (elem2.getBoundingClientRect().top + elem2.getBoundingClientRect().bottom) / 2;
+        console.log(x);
+        console.log(y);
+        elem.style.top = '' + (y - 30) + 'px';
+        elem.style.left = '' + (x - 30) + 'px';
+        elem.classList.add('tower-' + ter.castle);
+        }
+      }
+    }
   }
 
   do(i: number) {

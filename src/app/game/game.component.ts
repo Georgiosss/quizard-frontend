@@ -58,7 +58,9 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.joinGame(this.actRoute.snapshot.paramMap.get('gameId'));
-  
+    
+
+
     const element = document.getElementById('map');
     if (element != undefined) {
       element.style.transform = "scale(" + (window.innerWidth / 2000) + ")";
@@ -68,6 +70,25 @@ export class GameComponent implements OnInit, AfterViewInit {
       const element = document.getElementById('map');
       if (element != undefined) {
         element.style.transform = "scale(" + (window.innerWidth / 2000) + ")";
+      }
+
+      if (this.game.territories) {
+        for (let i = 0; i < this.game.territories.length; i++) {
+          const territory = this.game.territories[i];
+          const elem = document.getElementById(territory.territoryId.toString());
+          if (elem != null) {
+            const tower = document.getElementById("tow" + territory.territoryId.toString());
+            if (tower !== null) {
+              let x = (elem.getBoundingClientRect().right + elem.getBoundingClientRect().left) / 2;
+              let y = (elem.getBoundingClientRect().top + elem.getBoundingClientRect().bottom) / 2;
+              console.log(x);
+              console.log(y);
+              tower.style.top = '' + (y - 25) + 'px';
+              tower.style.left = '' + (x - 25) + 'px';
+              tower.classList.add('tower-' + territory.castle.leftTowers);
+            }
+          }
+        }
       }
     })
   }
@@ -133,6 +154,17 @@ export class GameComponent implements OnInit, AfterViewInit {
         if (elem != null) {
           elem.style.transition = "2.5s";
           elem.style.fill = this.colors[territory.color];
+
+          const tower = document.getElementById("tow" + territory.territoryId.toString());
+          if (tower !== null) {
+            let x = (elem.getBoundingClientRect().right + elem.getBoundingClientRect().left) / 2;
+            let y = (elem.getBoundingClientRect().top + elem.getBoundingClientRect().bottom) / 2;
+            console.log(x);
+            console.log(y);
+            tower.style.top = '' + (y - 25) + 'px';
+            tower.style.left = '' + (x - 25) + 'px';
+            tower.classList.add('tower-' + territory.castle.leftTowers);
+          }
         }
       }
     }

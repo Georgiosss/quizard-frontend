@@ -14,3 +14,13 @@ svg path:hover {
     transform: scale(1.02);
     transform-origin: center center;
 }
+
+.afxazeti {
+    width: 10px;
+    height: 10px;
+    position: fixed;
+    top: 10vh;
+    left: 5vw;
+    background-color: red;
+    z-index: 10;
+}
